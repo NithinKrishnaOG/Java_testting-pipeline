@@ -15,6 +15,6 @@ public class DemoApplication {
 
     @GetMapping("/api/hello")
     public String hello() {
-        return "Hello from the CI/CD Pipeline! v2";
+        return "Hello from the CI/CD Pipeline! v3";
     }
 }
