@@ -3,13 +3,13 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = "java-app:latest"
+        KUBECONFIG = "/var/lib/jenkins/.kube/config"
     }
 
     stages {
         stage('Checkout') {
             steps {
-                // Checkout code from repository
-                echo 'Checking out code...'
+                checkout scm
             }
         }
 
@@ -22,6 +22,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 sh "docker build -t ${DOCKER_IMAGE} ."
+        KUBECONFIG = "/var/lib/jenkins/.kube/config"
             }
         }
 
