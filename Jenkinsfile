@@ -29,7 +29,7 @@ pipeline {
             steps {
                 sh "docker save ${DOCKER_IMAGE} > java-app.tar"
                 script {
-                    def nodes = ['44.206.252.3', '34.201.45.23']
+                    def nodes = ['172.31.90.196', '172.31.94.94']
                     for (node in nodes) {
                         sh "ssh -i /var/lib/jenkins/for-personal.pem -o StrictHostKeyChecking=no admin@${node} 'sudo ctr -n k8s.io images import -' < java-app.tar"
                     }
