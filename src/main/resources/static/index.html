@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Testing App</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; margin: 0; }
+        .container { text-align: center; background: rgba(255, 255, 255, 0.1); padding: 3rem; border-radius: 20px; backdrop-filter: blur(10px); box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); border: 1px solid rgba(255, 255, 255, 0.18); }
+        h1 { font-size: 3rem; margin-bottom: 1rem; }
+        p { font-size: 1.2rem; margin-bottom: 2rem; }
+        #api-response { font-weight: bold; background: rgba(0,0,0,0.2); padding: 0.5rem 1rem; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cloud Deployment Success!</h1>
+        <p>This Java application was built and deployed via an automated pipeline.</p>
+        <div id="api-response">Loading status...</div>
+    </div>
+    <script>
+        fetch('/api/hello')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('api-response').innerText = data;
+            })
+            .catch(err => {
+                document.getElementById('api-response').innerText = "App is running (Local Mode)";
+                console.error(err);
+            });
+    </script>
+</body>
+</html>
