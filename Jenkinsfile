@@ -31,7 +31,7 @@ pipeline {
                 script {
                     def nodes = ['44.206.252.3', '34.201.45.23']
                     for (node in nodes) {
-                        sh "ssh -i /var/lib/jenkins/for-personal.pem -o StrictHostKeyChecking=no admin@${node} 'docker load' < java-app.tar"
+                        sh "ssh -i /var/lib/jenkins/for-personal.pem -o StrictHostKeyChecking=no admin@${node} 'sudo ctr -n k8s.io images import -' < java-app.tar"
                     }
                 }
             }
