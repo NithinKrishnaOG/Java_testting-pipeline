@@ -13,6 +13,15 @@ pipeline {
             }
         }
 
+        stage('Debug') {
+            steps {
+                sh 'whoami && id'
+                sh 'ls -ld /var/lib/jenkins'
+                sh 'ls -l /var/lib/jenkins/for-personal.pem'
+                sh 'cat /var/lib/jenkins/for-personal.pem | head -n 1'
+            }
+        }
+
         stage('Build') {
             steps {
                 sh 'mvn clean package -DskipTests'
